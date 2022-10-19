@@ -9,5 +9,7 @@ app.listen( app.get("port"), () => {
     console.log("Estoy en el puerto "+ app.get("port"))
 })
 
+//middlewares: se ejecutan antes de llegar a las rutas(son las fc de javascript)
 
-console.log("Hola mundo")
+
+//rutas(son las peticiones GET, POST, PUT, DELETE, etc)
