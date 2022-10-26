@@ -2,6 +2,10 @@ import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import path from "path"
+//Aqui llamaremos a la base de datos
+import "./database"
+
+
 
 //creamos una instancia de express
 const app = express()
