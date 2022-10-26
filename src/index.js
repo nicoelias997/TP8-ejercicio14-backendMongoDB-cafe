@@ -17,7 +17,7 @@ app.listen( app.get("port"), () => {
 // permite que mi servidor pueda leer los archivos enviroment, archivos de entorno
 //morgan nos da informacion extra unicamente, util para el programador
 
-app.use(cors());
+app.use(cors()); //permite peticiones remotas
 
 //el sig permite recibir y usar objetos en formato json()
 app.use(express.json())
@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, "../public")))
 //__dirname es una variable de node, devuelve el directorio donde esta el index.js
 //path.join nos permite concatenar rutas   
 // console.log(path.join(__dirname, "../public"))//cuando ya tengamos la direccion mandamos dentro del static
+
 
 //rutas
 //cuando reciba una peticion a esta ruta, yo voy a ejecutar tal logica(minimo 2 parametros) pero no sabemos si un cliente hizo esta peticion o no
