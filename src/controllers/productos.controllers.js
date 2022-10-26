@@ -1,9 +1,23 @@
 import {Producto} from "../models/producto";
 
 //aqui vendra la logica que controlara los productos
-export const listarProductos = (req, res) => {
-  res.send("Hola, desde el backend en la peticion get");
-};
+export const listarProductos = async (req, res) => {
+  try{
+    //tenemos que buscar los productos si es que existen..
+    const productos = await Producto.find() //metodo de mongoose, puede tener parametros, consulta para que encuentre en mi base de datos
+    // const dulces = await Producto.find({categoria: "salado"}) De esta manera filtrara los docs que tengan categoria salado en la base de datos...
+    res.status(200).json(productos);
+    //si existen... responder con ese array de productso
+  } catch(e){
+    console.log(e)
+    //enviar una respuesta al frontend
+    res.status(404).json({
+      message: "Error al buscar los productos."
+    })
+  }
+  };
+  //tiene que haber una unica res. si algo falla o funciona
+
 
 export const crearProducto = async (req, res) => {
   try {
