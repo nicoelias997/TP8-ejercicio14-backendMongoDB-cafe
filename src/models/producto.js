@@ -27,6 +27,4 @@ const productoSchema = new Schema({
 })
 
 //esto Producto, representara todo el objeto, todo el modelo de lo que creamos arriba
-const Producto = mongoose.model("producto", productoSchema)
-
-export default Producto
+export const Producto = mongoose.model("producto", productoSchema)
