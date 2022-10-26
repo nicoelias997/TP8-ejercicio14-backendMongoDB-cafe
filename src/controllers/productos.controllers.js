@@ -59,16 +59,17 @@ export const obtenerProducto = async (req, res) => {
 
   export const borrarProducto = async (req, res) => {
     try{
-        //Debemos obtener el parametro
-        console.log(req.params.id)
-        //Traemos el producto que tenga ese parametro si es que encontramos el parametro
-        const productoBuscado = await Producto.findById(req.params.id)
-        //enviar el producto con ese parametro al frontend
-        res.status(200).json(productoBuscado)
+       //obtener el parametro req.params.id
+        
+        //Luego de ser validados, debo actualizar y guardar en nuestra base de datos
+        await Producto.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+          message: "El producto fue eliminado correctamente."
+        })
     } catch(e){
       console.log(e)
       res.status(404).json({
-        message: "Error al buscar un producto."
+        message: "Error al intentar borrar un producto."
       })
     }
     };
