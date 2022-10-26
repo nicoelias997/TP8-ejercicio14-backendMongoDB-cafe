@@ -39,3 +39,20 @@ export const crearProducto = async (req, res) => {
     });
   }
 };
+
+
+export const obtenerProducto = async (req, res) => {
+  try{
+      //Debemos obtener el parametro
+      console.log(req.params.id)
+      //Traemos el producto que tenga ese parametro si es que encontramos el parametro
+      const productoBuscado = await Producto.findById(req.params.id)
+      //enviar el producto con ese parametro al frontend
+      res.status(200).json(productoBuscado)
+  } catch(e){
+    console.log(e)
+    res.status(404).json({
+      message: "Error al buscar un producto."
+    })
+  }
+  };
