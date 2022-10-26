@@ -2,10 +2,10 @@ import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import path from "path"
+import productoRouter from "./routes/productos.routes"
 //Aqui llamaremos a la base de datos
-import "./database"
-
-
+import "./database" 
+//Se tendria que mostrar el mensaje en clg que dejamos!! si se muestra!!
 
 //creamos una instancia de express
 const app = express()
@@ -43,13 +43,12 @@ app.use(express.static(path.join(__dirname, "../public")))
 
 //rutas
 //cuando reciba una peticion a esta ruta, yo voy a ejecutar tal logica(minimo 2 parametros) pero no sabemos si un cliente hizo esta peticion o no
-app.get("/prueba", (req, res) => {
-    res.send("Hola, desde el backend en la peticion get")
-})
-
-
-
-
+// app.get("/prueba", (req, res) => {
+//     res.send("Hola, desde el backend en la peticion get")
+// })
+//Lo llevamos a la carpeta productos.route, directamente lo importamos arriba::: ahora lo llamamos asi luego de ser importado..
+//http://localhost:4000/apicafe/prueba //para que no coincida las rutas del backend con el frontend
+app.use("/apicafe", productoRouter)
 
 
 
